@@ -2,7 +2,6 @@
 """This module defines a base class for all models in our hbnb clone"""
 import uuid
 import models
-from models.base_model import Base
 from datetime import datetime
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column
@@ -14,7 +13,7 @@ from sqlalchemy.orm import declarative_mixin
 Base = declarative_base()
 
 
-class BaseModel(base):
+class BaseModel():
     """A base class for all hbnb models
     
      Attributes:
