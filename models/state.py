@@ -27,7 +27,7 @@ class State(BaseModel, Base):
 
     def __init__(self, *args, **kwargs):
         """Initialize a new State.
-        
+
         Args:
             *args (any): Unused.
             **kwargs (dict): Key/value pairs of attributes.
