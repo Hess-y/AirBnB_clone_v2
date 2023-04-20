@@ -19,7 +19,7 @@ class State(BaseModel, Base):
         name (sqlalchemy String): The name of the State.
         cities (sqlalchemy relationship): The State-City relationship.
     """
-    if models.storage_type == 'db':
+    if models.storage_t == 'db':
         __tablename__ = "states"
         name = Column(String(128), nullable=False)
         cities = relationship("City",  backref="state", cascade="delete")
