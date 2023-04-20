@@ -29,6 +29,26 @@ class TestState(unittest.TestCase):
             os.remove("file.json")
         except Exception:
             pass
+            
+     @unittest.skipIf(storage._DBStorage__engine == 'db', "Skipping MySQL test for db storage engine")
+     def test_create_state(self):
+        # Get the number of current records in the states table
+        self.cursor.execute("SELECT COUNT(*) FROM states")
+        count_before = self.cursor.fetchone()[0]
+
+        # Create a new State object
+        new_state = State(name="California")
+
+        # Add the State object to the database
+        self.storage.new(new_state)
+        self.storage.save()
+
+        # Get the number of records in the states table after adding the new State
+        self.cursor.execute("SELECT COUNT(*) FROM states")
+        count_after = self.cursor.fetchone()[0]
+
+        # Assert that the count increased by 1 after adding the new State
+        self.assertEqual(count_after, count_before + 1)
 
     def test_pep8_Review(self):
         """Tests pep8 style"""
