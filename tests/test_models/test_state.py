@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 """test for state"""
 import unittest
+import MySQLdb
+from models import storage
 import os
 from models.state import State
 from models.base_model import BaseModel
@@ -22,7 +24,7 @@ class TestState(unittest.TestCase):
         del cls.state
 
     def tearDown(self):
-        """teardown"""
+        """Close the MySQL connection after testing"""
         try:
             os.remove("file.json")
         except Exception:
