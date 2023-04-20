@@ -23,7 +23,8 @@ class State(BaseModel, Base):
     name = Column(String(128), nullable=False)
 
     if models.storage_type == 'db':
-    cities = relationship("City",  backref="state", cascade="delete")
+        cities = relationship("City",  backref="state", cascade="delete")
+    else:
         @property
         def cities(self):
             """Get a list of all related City objects."""
@@ -33,7 +34,7 @@ class State(BaseModel, Base):
                     city_list.append(city)
             return city_list
 
-def __init__(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs):
         """Initialize a new State.
         
         Args:
