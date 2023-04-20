@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """ New engine DBStorage """
 from sqlalchemy import create_engine
+from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, scoped_session
 from models.base_model import BaseModel, Base
 from models.user import User
@@ -11,6 +12,8 @@ from models.amenity import Amenity
 from models.review import Review
 from sqlalchemy.orm import relationship
 import os
+
+Base = declarative_base()
 
 
 class DBStorage:
@@ -68,6 +71,7 @@ class DBStorage:
 
     def reload(self):
         """Create all tables in the database and initialize a new session."""
+        from models.engine.db_storage import Base
         Base.metadata.create_all(self.__engine)
         session_factory = sessionmaker(bind=self.__engine,
                                        expire_on_commit=False)
