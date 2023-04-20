@@ -33,7 +33,7 @@ class TestState(unittest.TestCase):
      @unittest.skipIf(storage._DBStorage__engine == 'db', "Skipping MySQL test for db storage engine")
      def test_create_state(self):
         # Establish database connection
-        db = MySQLdb.connect(host="localhost", user="your_username", passwd="your_password", db="your_database_name")
+        db = MySQLdb.connect(host="HBNB_MYSQL_HOST", user="HBNB_MYSQL_USER", passwd="HBNB_MYSQL_PWD", db="BNB_MYSQL_DB")
         cursor = db.cursor()
         
         # Get the number of current records in the states table
