@@ -32,6 +32,10 @@ class TestState(unittest.TestCase):
             
      @unittest.skipIf(storage._DBStorage__engine == 'db', "Skipping MySQL test for db storage engine")
      def test_create_state(self):
+        # Establish database connection
+        db = MySQLdb.connect(host="localhost", user="your_username", passwd="your_password", db="your_database_name")
+        cursor = db.cursor()
+        
         # Get the number of current records in the states table
         self.cursor.execute("SELECT COUNT(*) FROM states")
         count_before = self.cursor.fetchone()[0]
@@ -49,6 +53,10 @@ class TestState(unittest.TestCase):
 
         # Assert that the count increased by 1 after adding the new State
         self.assertEqual(count_after, count_before + 1)
+        
+        # Close cursor and database connection
+        cursor.close()
+        db.close()
 
     def test_pep8_Review(self):
         """Tests pep8 style"""
