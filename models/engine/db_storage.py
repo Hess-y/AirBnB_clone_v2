@@ -13,7 +13,8 @@ from models.review import Review
 from sqlalchemy.orm import relationship
 import os
 
-Base = declarative_base()
+classes = {"Amenity": Amenity, "City": City,
+           "Place": Place, "Review": Review, "State": State, "User": User}
 
 
 class DBStorage:
