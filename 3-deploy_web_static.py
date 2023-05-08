@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" Function that deploys """
+# Fabfile to create and distribute an archive to a web server.
 
 from fabric.api import env, local, put, run
 from datetime import datetime
