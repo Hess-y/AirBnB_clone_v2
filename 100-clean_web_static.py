@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" Function that deploys """
+# Fabfile to delete out-of-date archives.
 from fabric.api import *
 
 
