@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" Function that compress a folder """
+# Fabfile to create and distribute an archive to a web server.
 from datetime import datetime
 from fabric.api import *
 import shlex
