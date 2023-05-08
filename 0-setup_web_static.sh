@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env bash
 #Write a Bash script that sets up your web servers for the deployment of web_static
 sudo apt-get -y update
 sudo apt-get -y upgrade
