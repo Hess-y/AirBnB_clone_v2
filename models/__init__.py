@@ -8,7 +8,7 @@ Otherwise, instantiates a file storage engine (FileStorage).
 from os import getenv
 
 
-if os.getenv("HBNB_TYPE_STORAGE") == "db":
+if getenv("HBNB_TYPE_STORAGE") == "db":
     from models.engine.db_storage import DBStorage
     storage = DBStorage()
 else:
