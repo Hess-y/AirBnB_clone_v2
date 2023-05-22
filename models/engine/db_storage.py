@@ -37,6 +37,7 @@ class DBStorage:
                                       pool_pre_ping=True)
         if os.getenv("HBNB_ENV") == "test":
             Base.metadata.drop_all(self.__engine)
+        self.reload()
 
     def all(self, cls=None):
         """Query on the curret database session all objects of the given class.
@@ -81,3 +82,4 @@ class DBStorage:
     def close(self):
         """Close the working SQLAlchemy session."""
         self.__session.close()
+        self.reload()
